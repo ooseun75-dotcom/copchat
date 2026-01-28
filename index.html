@@ -13,39 +13,65 @@
     }
 
     body {
-      background: url("./bg.png") center / contain no-repeat;
       background-color: #eaeaea;
       color: white;
+      overflow-x: hidden;
     }
 
+    /* 배경 어둡게 */
     .overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.35);
+      z-index: 0;
+      pointer-events: none;
     }
 
-    /* 🔹 텍스트 영역 */
-    .center {
+    /* 전체 레이아웃 */
+    .wrap {
       position: relative;
       z-index: 1;
-      min-height: 120vh;            /* 🔴 스크롤 공간 생성 */
+      min-height: 130vh;     /* 🔴 스크롤 공간 (버튼이 아래에 나오게) */
       display: flex;
-      align-items: flex-start;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 80px;
+    }
+
+    /* 🌹 이미지 크기 조절 (여기만 바꾸면 됨) */
+    .hero-img {
+      width: min(520px, 90vw);
+      height: auto;
+      margin-top: 40px;
+      border-radius: 18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+    }
+
+    /* 📝 텍스트: 조금 아래 + 작게 */
+    .title {
+      margin-top: 28px;      /* 🔴 이미지 아래 간격 */
+      font-size: 20px;       /* 🔴 작게 */
+      font-weight: 800;
       text-align: center;
-      padding-top: 60vh;            /* 🔴 아래로 내림 */
-      font-size: 20px;              /* 🔴 글자 작게 */
-      font-weight: 700;
       line-height: 1.4;
       text-shadow: 0 2px 12px rgba(0,0,0,0.6);
     }
 
-    /* 🔹 다운로드 영역 (스크롤 후 등장) */
-    .bottom {
-      margin-top: 120px;            /* 🔴 스크롤해야 보이게 */
+    /* 안내(스크롤 유도) */
+    .hint {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 0.9;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    /* ⬇ 다운로드는 스크롤해야 보이게 아래로 밀기 */
+    .download-area {
+      margin-top: 55vh;      /* 🔴 이 값이 클수록 더 많이 스크롤해야 보임 */
       display: flex;
       justify-content: center;
-      padding-bottom: 60px;
+      width: 100%;
     }
 
     .btn {
@@ -58,22 +84,34 @@
       text-decoration: none;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
   </style>
 </head>
 
 <body>
   <div class="overlay"></div>
 
-  <div class="center">
-    안정화되고 편한 copchat beta 1.0버전!
-  </div>
+  <div class="wrap">
+    <!-- ✅ 가운데 이미지 -->
+    <img src="./bg.png" class="hero-img" alt="copchat" />
 
-  <div class="bottom">
-    <a class="btn"
-       href="https://github.com/ooseun75-dotcom/copchat/releases/download/v1.0/파일이름.exe"
-       download>
-       DOWNLOAD
-    </a>
+    <!-- ✅ 텍스트 (조금 아래 + 작게) -->
+    <div class="title">
+      안전화되고 편한 copchat beta 1.0버전!
+    </div>
+    <div class="hint">아래로 스크롤해서 다운로드</div>
+
+    <!-- ✅ 스크롤해야 보이는 다운로드 -->
+    <div class="download-area">
+      <a class="btn"
+         href="https://github.com/ooseun75-dotcom/copchat/releases/download/v1.0/파일이름.exe"
+         download>
+        DOWNLOAD
+      </a>
+    </div>
   </div>
 </body>
 </html>
