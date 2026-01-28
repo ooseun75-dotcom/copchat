@@ -18,27 +18,25 @@
       overflow-x: hidden;
     }
 
-    /* 배경 어둡게 */
+    /* 🔴 클릭 막지 않게 */
     .overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.35);
       z-index: 0;
-      pointer-events: none;
+      pointer-events: none; /* ✅ 이게 핵심 */
     }
 
-    /* 전체 레이아웃 */
     .wrap {
       position: relative;
       z-index: 1;
-      min-height: 130vh;     /* 🔴 스크롤 공간 (버튼이 아래에 나오게) */
+      min-height: 130vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 32px 20px 80px;
     }
 
-    /* 🌹 이미지 크기 조절 (여기만 바꾸면 됨) */
     .hero-img {
       width: min(520px, 90vw);
       height: auto;
@@ -47,17 +45,16 @@
       box-shadow: 0 18px 60px rgba(0,0,0,0.35);
     }
 
-    /* 📝 텍스트: 조금 아래 + 작게 */
+    /* ✅ 텍스트 더 아래로 */
     .title {
-      margin-top: 28px;      /* 🔴 이미지 아래 간격 */
-      font-size: 20px;       /* 🔴 작게 */
+      margin-top: 60px;   /* 🔴 여기 숫자 키우면 더 내려감 */
+      font-size: 20px;
       font-weight: 800;
       text-align: center;
       line-height: 1.4;
       text-shadow: 0 2px 12px rgba(0,0,0,0.6);
     }
 
-    /* 안내(스크롤 유도) */
     .hint {
       margin-top: 10px;
       font-size: 14px;
@@ -66,9 +63,8 @@
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
 
-    /* ⬇ 다운로드는 스크롤해야 보이게 아래로 밀기 */
     .download-area {
-      margin-top: 55vh;      /* 🔴 이 값이 클수록 더 많이 스크롤해야 보임 */
+      margin-top: 55vh;
       display: flex;
       justify-content: center;
       width: 100%;
@@ -83,6 +79,9 @@
       font-weight: 900;
       text-decoration: none;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: inline-block;
+      cursor: pointer;
+      user-select: none;
     }
 
     .btn:active {
@@ -95,20 +94,16 @@
   <div class="overlay"></div>
 
   <div class="wrap">
-    <!-- ✅ 가운데 이미지 -->
     <img src="./bg.png" class="hero-img" alt="copchat" />
 
-    <!-- ✅ 텍스트 (조금 아래 + 작게) -->
     <div class="title">
       안전화되고 편한 copchat beta 1.0버전!
     </div>
     <div class="hint">아래로 스크롤해서 다운로드</div>
 
-    <!-- ✅ 스크롤해야 보이는 다운로드 -->
     <div class="download-area">
       <a class="btn"
-         href="https://github.com/ooseun75-dotcom/copchat/releases/download/v1.0/파일이름.exe"
-         download>
+         href="https://github.com/ooseun75-dotcom/copchat/releases/download/v1.0/파일이름.exe">
         DOWNLOAD
       </a>
     </div>
