@@ -13,14 +13,15 @@
     }
 
     body {
-      background: url("./bg.png") center / cover no-repeat;
+      background: url("./bg.png") center / contain no-repeat; /* 🔴 여기 */
+      background-color: #eaeaea;
       color: white;
     }
 
     .overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.35);
     }
 
     .center {
@@ -32,7 +33,7 @@
       justify-content: center;
       text-align: center;
       padding: 0 20px;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       line-height: 1.3;
       text-shadow: 0 2px 12px rgba(0,0,0,0.6);
@@ -65,7 +66,7 @@
   <div class="overlay"></div>
 
   <div class="center">
-    안정화되고 편한 copchat beta 1.0버전!<br>
+    안정화되고 편한 copchat beta 1.0버전!
   </div>
 
   <div class="bottom">
