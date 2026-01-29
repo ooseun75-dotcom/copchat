@@ -10,82 +10,102 @@
       margin: 0;
       height: 100%;
       font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans KR", sans-serif;
-    }
-
-    body {
       background-color: #eaeaea;
       color: white;
       overflow-x: hidden;
     }
 
-    /* 🔴 클릭 막지 않게 */
+    /* 어두운 오버레이 */
     .overlay {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.35);
       z-index: 0;
-      pointer-events: none; /* ✅ 이게 핵심 */
+      pointer-events: none;
     }
 
     .wrap {
       position: relative;
       z-index: 1;
-      min-height: 130vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 32px 20px 80px;
+      padding: 32px 20px;
     }
 
     .hero-img {
       width: min(520px, 90vw);
-      height: auto;
       margin-top: 40px;
       border-radius: 18px;
       box-shadow: 0 18px 60px rgba(0,0,0,0.35);
     }
 
-    /* ✅ 텍스트 더 아래로 */
     .title {
-      margin-top: 60px;   /* 🔴 여기 숫자 키우면 더 내려감 */
+      margin-top: 60px;
       font-size: 20px;
       font-weight: 800;
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.5;
       text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      user-select: none;
+    }
+
+    .title a {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 10px 22px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
     }
 
     .hint {
-      margin-top: 10px;
+      margin-top: 80px;
       font-size: 14px;
       font-weight: 700;
       opacity: 0.9;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      user-select: none;
+    }
+
+    /* 🔥 핵심: 다운로드 섹션 = 화면 한 칸 */
+    .download-section {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .download-area {
-      margin-top: 55vh;
-      display: flex;
-      justify-content: center;
-      width: 100%;
+      text-align: center;
     }
 
     .btn {
       background: rgba(22,163,74,0.95);
       color: white;
-      padding: 14px 36px;
-      border-radius: 14px;
-      font-size: 18px;
+      padding: 16px 42px;
+      border-radius: 16px;
+      font-size: 20px;
       font-weight: 900;
       text-decoration: none;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       display: inline-block;
       cursor: pointer;
       user-select: none;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover {
+      background: rgba(22,163,74,1);
+      transform: translateY(-2px);
     }
 
     .btn:active {
-      transform: translateY(1px);
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -94,33 +114,31 @@
   <div class="overlay"></div>
 
   <div class="wrap">
-    <img src="./bg.png" class="hero-img" alt="copchat" />
+    <img src="./bg.png" class="hero-img" alt="CopChat" />
 
-    <div class="title" style="user-select: none;">
-  “당신의 아이디어를 현실로, 우리의 AI와 함께.” <br>
-  “AI, 이제 누구나 쉽게, 당신의 하루를 더 똑똑하게.”<br>
-  “회원가입만 하면 바로 AI 체험 가능 →”<br>
-  “당신의 아이디어를 현실로 구현하는, 차세대 AI 솔루션”<br>
-  “스마트한 혁신, 누구나 경험할 수 있습니다.”<br>
-  
-  <!-- 웹페이지 바로가기 버튼 -->
-  <a href="http://copchat-main.kro.kr" target="_blank" 
-     style="display:inline-block; margin-top:10px; padding:10px 20px; background:#007BFF; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">
-     웹페이지로 바로가기
-  </a>
-</div>
-
-      
-      
+    <div class="title">
+      “당신의 아이디어를 현실로, 우리의 AI와 함께.”<br>
+      “AI, 이제 누구나 쉽게, 당신의 하루를 더 똑똑하게.”<br>
+      “회원가입만 하면 바로 AI 체험 가능 →”<br>
+      “당신의 아이디어를 현실로 구현하는, 차세대 AI 솔루션”<br>
+      “스마트한 혁신, 누구나 경험할 수 있습니다.”
+      <br>
+      <a href="http://copchat-main.kro.kr" target="_blank">
+        웹페이지로 바로가기
+      </a>
     </div>
-    <div class="hint" style="user-select: none;">                                                                   아래로 스크롤해서 다운로드 </div>
 
+    <div class="hint">아래로 스크롤해서 다운로드</div>
+  </div>
+
+  <!-- 🔥 다운로드 섹션 -->
+  <section class="download-section">
     <div class="download-area">
       <a class="btn"
          href="https://github.com/ooseun75-dotcom/copchat/releases/download/1.0/copchat_app.exe">
         DOWNLOAD
       </a>
     </div>
-  </div>
+  </section>
 </body>
 </html>
